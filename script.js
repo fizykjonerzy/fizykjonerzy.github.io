@@ -109,6 +109,7 @@ start.addEventListener("click",()=>{
 
     document.getElementById("mainmenu").style.display = "none";
     document.getElementById("quiz").style.display = "block";
+    document.querySelector("footer").style.display = "none";
     szczebel[szczebelPogrubienie].style.fontWeight = 'bold';
 
     pokazPytanie();
