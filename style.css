@@ -25,14 +25,24 @@ header{
     justify-content: center;
     align-items: center;
     background-color: rgb(28, 28, 107);
-
+    /* border-bottom: 3px solid aqua; */
 }
-main{
+
+footer{
+    height: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90%;
-    background-color: rgb(18, 18, 68);
+    background-color: rgb(28, 28, 107);
+    /* border-top: 3px solid aqua; */
+}
+
+main{
+    height: 85%;
+    background-image: url("milionerzy.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 #nastepne{
@@ -40,12 +50,14 @@ main{
 }
 
 #quiz{
-    background-color: rgb(28, 28, 107);
+    background-color: rgba(28, 28, 107, 0.5);
+    backdrop-filter: blur(10px);
     height: 40%;
     width: 100%;
     bottom: 0;
     position: absolute;
     display:none; 
+    /* border-top: 3px solid aqua; */
 }
 
 #pytanie{
@@ -71,25 +83,108 @@ main{
 }
 
 button{
-    background-color: hsl(240, 100%, 56%);
-    border: 3px solid white;
+    background-image: linear-gradient(to right, hsl(240, 100%, 56%), hsl(240, 100%, 20%));
+    border: 2px solid white;
     border-radius: 20px;
     color:white;
     font-size: 2rem;
     cursor:pointer;
+    transition: ease 0.5s;
 }
-/* button:hover{
-    background-color: hsl(240, 100%, 60%);
-} */
+button:hover{
+    transform: scale(1.025);
+    transition: ease 0.5s;
+    box-shadow: 0 0 20px aqua;
+}
 
 .poprawna{
-    background-color: green;
+    background-image: linear-gradient(to right, hsl(135, 100%, 56%), hsl(135, 100%, 20%));
 }
 
 .zla{
-    background-color: red;
+    background-image: linear-gradient(to right, hsl(0, 100%, 56%), hsl(0, 100%, 20%));
 }
 
 #wygrana{
     display:none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
+
+#mainmenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#start,#nastepne{
+    width:300px;
+    height: 100px;
+}
+
+#prawy{
+    height: 100%;
+    width: 20%;
+    float:right;
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: hsl(240, 59%, 35%);
+    /* border-left: 3px solid aqua; */
+}
+
+#lewy{
+    height: 100%;
+    width: 20%;
+    float:left;
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: hsl(240, 59%, 35%);
+    /* border-right: 3px solid aqua; */
+}
+
+#srodek{
+    height: 100%;
+    width: 60%;
+    float:left;
+}
+
+#srodekmenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+#staty{
+    height: 10%;
+    background-color: hsl(240, 59%, 60%);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#staty p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0;
+    padding:0;
+    height: 100%;
+}
+
+#menu{
+    display:none;
+    height: 60%;
+}
+
+.prog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0;
+    padding:0;
+    height: 100%;
+}
+
+
