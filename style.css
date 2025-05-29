@@ -1,0 +1,95 @@
+.roboto{
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+}
+*{
+    font-family: Roboto;
+}
+body{
+    text-align: center;
+    color:white;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+header{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(28, 28, 107);
+
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    background-color: rgb(18, 18, 68);
+}
+
+#nastepne{
+    display:none; 
+}
+
+#quiz{
+    background-color: rgb(28, 28, 107);
+    height: 40%;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    display:none; 
+}
+
+#pytanie{
+    height: 20%;
+}
+
+#odpowiedzi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
+#odpowiedziGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1rem;
+    width: 75%;
+    height: 100%;
+}
+
+.odp{
+    
+}
+
+button{
+    background-color: hsl(240, 100%, 56%);
+    border: 3px solid white;
+    border-radius: 20px;
+    color:white;
+    font-size: 2rem;
+    cursor:pointer;
+}
+/* button:hover{
+    background-color: hsl(240, 100%, 60%);
+} */
+
+.poprawna{
+    background-color: green;
+}
+
+.zla{
+    background-color: red;
+}
+
+#wygrana{
+    display:none;
+}
