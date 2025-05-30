@@ -1,3 +1,4 @@
+//pytania
 const pytania = [
     {
         pytanie: "Co jest jednostką natężenia prądu w układzie SI?",
@@ -51,68 +52,60 @@ const pytania = [
       }
   ];
 
-let los = 0;
-let a = 0;
-let byly = [];
-let p = 0;
-
-let czyodp = false;
-
 let start = document.getElementById("start");
-let mainmenu = document.getElementById("mainmenu");
-let menu = document.getElementById("menu");
-let quiz = document.getElementById("quiz");
+let a = 0;
+let czyodp = false;
 let pytanie = document.getElementById("pytanietext");
 let odpowiedzi = document.querySelectorAll(".odp");
 let nastepne = document.getElementById("nastepne");
+
+
+//od szczebelka
 
 let szczebel = document.querySelectorAll('.szczebel');
 let szczebelPogrubienie = szczebel.length -1;
 let stawkiGwarantowane = [szczebel[5].innerHTML, szczebel[10].innerHTML];
 let szczebelIndex = szczebel.length -1;
 
+//od pytania
 let pokazPytanie = () => {
-    los = Math.floor(Math.random() * pytania.length);
-    p = pytania[los];
-    pytania.splice(los,1);
-
-    czyodp = false;
-    
-
-    szczebel[szczebelPogrubienie].style.fontWeight = 'bold';
-    document.getElementById("apytanie").textContent = "Pytanie "+a+"/12";
-
     nastepne.style.display = "none";
-    pytanie.textContent = p.pytanie;
-
+    czyodp = false;
+    pytanie.textContent = pytania[a].pytanie;
     let i = 0;
+
     odpowiedzi.forEach(e => {
+        
         e.classList.remove("zla");
         e.classList.remove("poprawna");
-        e.textContent = p.odpowiedzi[i];
+        e.textContent = pytania[a].odpowiedzi[i];
         i++;
     });
 };
 
+//start quizu
 start.addEventListener("click",()=>{
-    mainmenu.style.display = "none";
-    menu.style.display = "block";
-    quiz.style.display = "block";
-    document.querySelector("footer").style.display = "none";
+    document.getElementById("mainmenu").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+    szczebel[szczebelPogrubienie].style.fontWeight = 'bold';
     pokazPytanie();
 })
+
 
 
 odpowiedzi.forEach(e => {
     e.addEventListener("click",() => {
         if(czyodp == false){
             let podana = e.id;
-            if(podana == p.poprawna){
+            if(podana == pytania[a].poprawna){
                 e.classList.add("poprawna");
+                czyodp = true;
+                nastepne.style.display = "block";
             }else{
                 e.classList.add("zla");
-                odpowiedzi[p.poprawna].classList.add("poprawna");
-
+                
+                odpowiedzi[pytania[a].poprawna].classList.add("poprawna");
+                
                 if(szczebel[szczebelIndex].innerHTML > 40000 && szczebel[szczebelPogrubienie].innerHTML > 1000){
                     alert("Wygrałeś 40 000 zł");
                 }
@@ -122,23 +115,33 @@ odpowiedzi.forEach(e => {
                 }else{
                     alert("Wygrałeś 0zł :((");
                 }
+                
+
+
+
             }
-            czyodp = true;
-            nastepne.style.display = "block";
+
         }
     })
 });
 
+//następne pytanie
+
+
 nastepne.addEventListener("click",() => {
+    
     a++;
     szczebelIndex = szczebelPogrubienie - a;
     szczebel[szczebelIndex].style.fontWeight = 'bold';
-    if(a < 12){
+
+    if(a != 12){
         pokazPytanie();
+        
+        
     }else{
         nastepne.style.display = "none";
         document.getElementById("quiz").style.display = "none";
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("wygrana").style.display = "flex";
+        document.getElementById("wygrana").style.display = "block";
     }
+    console.log(a);
 })
