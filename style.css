@@ -53,7 +53,8 @@ main{
     bottom: 0;
     position: absolute;
     display:none; 
-    /* border-top: 3px solid aqua; */
+    border-top: 3px solid aqua;
+    box-sizing: border-box;
 }
 
 #pytanie{
@@ -75,11 +76,12 @@ main{
 }
 
 .odp{
-    
+    text-align: left;
+    padding-left: 20px;
 }
 
 button{
-    background-image: linear-gradient(to right, hsl(240, 100%, 56%), hsl(240, 100%, 20%));
+    background: linear-gradient(to right, hsl(240, 100%, 56%), hsl(240, 100%, 20%));
     border: 2px solid white;
     border-radius: 20px;
     color:white;
@@ -94,11 +96,15 @@ button:hover{
 }
 
 .poprawna{
-    background-image: linear-gradient(to right, hsl(135, 100%, 56%), hsl(135, 100%, 20%));
+    background: linear-gradient(to right, hsl(135, 100%, 56%), hsl(135, 100%, 20%));
 }
 
 .zla{
-    background-image: linear-gradient(to right, hsl(0, 100%, 56%), hsl(0, 100%, 20%));
+    background: linear-gradient(to right, hsl(0, 100%, 56%), hsl(0, 100%, 20%));
+}
+
+.czekaj{
+    background: linear-gradient(to right, hsl(41, 100%, 56%), hsl(41, 100%, 20%));
 }
 
 #wygrana{
@@ -132,8 +138,10 @@ button:hover{
     float:right;
     display: grid;
     grid-template-columns: 1fr;
-    background-color: hsl(240, 59%, 35%);
-    /* border-left: 3px solid aqua; */
+    background-color: rgba(37, 37, 142,0.75);
+    border-left: 3px solid aqua;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
 }
 
 #lewy{
@@ -142,8 +150,10 @@ button:hover{
     float:left;
     display: grid;
     grid-template-columns: 1fr;
-    background-color: hsl(240, 59%, 35%);
-    /* border-right: 3px solid aqua; */
+    background-color: rgba(37, 37, 142,0.75);
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    border-right: 3px solid aqua;
 }
 
 #srodek{
@@ -161,9 +171,12 @@ button:hover{
 
 #staty{
     height: 10%;
-    background-color: hsl(240, 59%, 60%);
+    background-color: rgba(93, 93, 213,0.7);
+    backdrop-filter: blur(10px);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    box-sizing: border-box;
+    border-bottom: 3px solid aqua;
 }
 
 #staty p {
@@ -180,13 +193,16 @@ button:hover{
     height: 60%;
 }
 
-.prog{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:0;
-    padding:0;
-    height: 100%;
+#kasa{
+    font-size: 1.5rem;
+}
+
+.pogrubienie{
+    background-color:orange;
+    color:white;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px black;
+    border-radius: 15px;
 }
 
 

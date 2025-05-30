@@ -77,19 +77,22 @@ let pokazPytanie = () => {
     pytania.splice(los,1);
 
     czyodp = false;
-    
+    // szczebel[szczebelPogrubienie].classList.add("pogrubienie");
 
-    szczebel[szczebelPogrubienie].style.fontWeight = 'bold';
-    document.getElementById("apytanie").textContent = "Pytanie "+a+"/12";
+    szczebelIndex = szczebelPogrubienie - a;
+    szczebel[szczebelIndex].classList.add("pogrubienie");
+    
+    document.getElementById("apytanie").textContent = "Pytanie "+(a+1)+"/12";
 
     nastepne.style.display = "none";
     pytanie.textContent = p.pytanie;
 
     let i = 0;
+    let literki = ["A","B","C","D"];
     odpowiedzi.forEach(e => {
         e.classList.remove("zla");
         e.classList.remove("poprawna");
-        e.textContent = p.odpowiedzi[i];
+        e.textContent = literki[i]+". "+p.odpowiedzi[i];
         i++;
     });
 };
@@ -106,6 +109,10 @@ start.addEventListener("click",()=>{
 odpowiedzi.forEach(e => {
     e.addEventListener("click",() => {
         if(czyodp == false){
+            e.classList.add("czekaj");
+            czyodp = true;
+            setTimeout(() => {
+            e.classList.remove("czekaj");
             let podana = e.id;
             if(podana == p.poprawna){
                 e.classList.add("poprawna");
@@ -114,25 +121,24 @@ odpowiedzi.forEach(e => {
                 odpowiedzi[p.poprawna].classList.add("poprawna");
 
                 if(szczebel[szczebelIndex].innerHTML > 40000 && szczebel[szczebelPogrubienie].innerHTML > 1000){
-                    alert("Wygrałeś 40 000 zł");
+                    // alert("Wygrałeś 40 000 zł");
                 }
 
                 if(szczebel[szczebelIndex].innerHTML > 1000){
-                    alert("Wygrałeś 1000 zł");
+                    // alert("Wygrałeś 1000 zł");
                 }else{
-                    alert("Wygrałeś 0zł :((");
+                    // alert("Wygrałeś 0zł :((");
                 }
             }
-            czyodp = true;
             nastepne.style.display = "block";
+            },2000);
         }
     })
 });
 
 nastepne.addEventListener("click",() => {
     a++;
-    szczebelIndex = szczebelPogrubienie - a;
-    szczebel[szczebelIndex].style.fontWeight = 'bold';
+    szczebel[szczebelIndex].classList.remove("pogrubienie");
     if(a < 12){
         pokazPytanie();
     }else{
