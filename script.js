@@ -65,6 +65,7 @@ let quiz = document.getElementById("quiz");
 let pytanie = document.getElementById("pytanietext");
 let odpowiedzi = document.querySelectorAll(".odp");
 let nastepne = document.getElementById("nastepne");
+let progi = document.getElementById("progi");
 
 let szczebel = document.querySelectorAll('.szczebel');
 let szczebelPogrubienie = szczebel.length -1;
@@ -81,7 +82,7 @@ let pokazPytanie = () => {
 
     szczebelIndex = szczebelPogrubienie - a;
     szczebel[szczebelIndex].classList.add("pogrubienie");
-    
+
     document.getElementById("apytanie").textContent = "Pytanie "+(a+1)+"/12";
 
     nastepne.style.display = "none";
@@ -116,21 +117,21 @@ odpowiedzi.forEach(e => {
             let podana = e.id;
             if(podana == p.poprawna){
                 e.classList.add("poprawna");
+                nastepne.style.display = "block";
             }else{
                 e.classList.add("zla");
                 odpowiedzi[p.poprawna].classList.add("poprawna");
-
+                document.getElementById("przegrana").style.display = "block";
+                
                 if(szczebel[szczebelIndex].innerHTML > 40000 && szczebel[szczebelPogrubienie].innerHTML > 1000){
-                    // alert("Wygrałeś 40 000 zł");
+                    progi.textContent = "Wygrana z progów gwarantowanych: 40 000 zł";
                 }
-
                 if(szczebel[szczebelIndex].innerHTML > 1000){
-                    // alert("Wygrałeś 1000 zł");
+                    progi.textContent = "Wygrana z progów gwarantowanych: 1000 zł";
                 }else{
-                    // alert("Wygrałeś 0zł :((");
+                    progi.textContent = "Nie osiągnąłeś żadnego progu gwarantowanego!";
                 }
             }
-            nastepne.style.display = "block";
             },2000);
         }
     })
@@ -143,8 +144,12 @@ nastepne.addEventListener("click",() => {
         pokazPytanie();
     }else{
         nastepne.style.display = "none";
-        document.getElementById("quiz").style.display = "none";
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("wygrana").style.display = "flex";
+        // document.getElementById("quiz").style.display = "none";
+        // document.getElementById("menu").style.display = "none";
+        document.getElementById("wygrana").style.display = "block";
     }
 })
+
+let wroc = () => {
+    location.reload();
+}

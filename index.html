@@ -17,26 +17,38 @@
                 <img src="logo.png" alt="logo" style="height: 500px;">
             </div>
             <div>
-                <button id="start">START</button>
+                <button id="start" class="przycisk">START</button>
             </div>
         </div>
-        <div id="wygrana"><h1>elo żelo wygrałeś</h1></div>
         <div id="menu">
             <div id="lewy">
+                <div><img class="kolo" id="5050" src="5050.png"></div>
+                <div><img class="kolo" id="publicznosc" src="publicznosc.png"></div>
+                <div><img class="kolo" id="telefon" src="telefon.png"></div>
             </div>
             <div id="srodek">
                 <div id="staty">
                     <p id="apytanie">Pytanie 1/12</p>
                     <p id="czas">Czas</p>
-                    <p id="kasa">Kasa</p>
+                    <p id="pieniądze">Pieniądze</p>
                 </div>
                 <div id="srodekmenu">
-                    <button id="nastepne">NASTĘPNE PYTANIE</button>
+                    <button id="nastepne" class="przycisk">NASTĘPNE PYTANIE</button>
+                    <div id="przegrana">
+                        <h1>Przegrałeś! :(</h1>
+                        <h2 id="progi"></h2>
+                        <button class="przycisk" onclick="wroc()">WRÓĆ DO MENU</button>
+                    </div>
+                    <div id="wygrana">
+                        <h1>Wygrałeś</h1>
+                        <h1>1 000 000 zł!</h1>
+                        <button class="przycisk" onclick="wroc()">WRÓĆ DO MENU</button>
+                    </div>
                 </div>
                 
             </div>
             <div id="prawy">
-                    <table id="kasa" >
+                    <table id="kasa">
                         <tr><td>12. </td><td>1 000 000</td></tr>
                         <tr><td>11. </td><td class="szczebel">500 000</td></tr>
                         <tr><td>10. </td><td class="szczebel">250 000</td></tr>
