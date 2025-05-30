@@ -224,4 +224,8 @@ button:hover{
     filter: drop-shadow(0 0 10px aqua);
 }
 
+.kolonieaktywne{
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
 

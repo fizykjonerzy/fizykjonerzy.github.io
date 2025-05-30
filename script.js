@@ -153,3 +153,25 @@ nastepne.addEventListener("click",() => {
 let wroc = () => {
     location.reload();
 }
+
+fortyforty = document.getElementById("5050");
+publicznosc = document.getElementById("publicznosc");
+telefon = document.getElementById("telefon");
+
+fortyforty.addEventListener("click",() =>{
+    if(!fortyforty.classList.contains("kolonieaktywne")){
+        niepoprawne = Array.from(odpowiedzi);
+
+        niepoprawne.splice(p.poprawna,1);
+        nplos = Math.floor(Math.random() * niepoprawne.length);
+        niepoprawne[nplos].replaceWith(document.createElement("div"));
+
+        niepoprawne.splice(nplos,1);
+        nplos = Math.floor(Math.random() * niepoprawne.length);
+        niepoprawne[nplos].replaceWith(document.createElement("div"));
+
+        fortyforty.classList.remove("kolo");
+        fortyforty.classList.add("kolonieaktywne");
+    }
+})
+
