@@ -225,7 +225,73 @@ button:hover{
 }
 
 .kolonieaktywne{
+    transition: ease 0.5s;
     filter: grayscale(1);
     cursor: not-allowed;
 }
 
+#publicznoscOkno{
+    display:none;
+    background: linear-gradient(to right, hsl(240, 100%, 56%), hsl(240, 100%, 20%));
+    width: 40%;
+    height: 60%;
+    font-size: 2rem;
+    text-align: left;
+    padding:20px;
+    border-radius: 20px;
+    border:3px solid aqua;
+}
+
+#publicznoscOkno table{
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+}
+
+
+.pasek{
+    height: 80%;
+    background-color: white;
+    float:left;
+
+}
+
+.literka{
+    width: 40px;
+}
+
+
+#telefonOkno{
+    display:none;
+    background: linear-gradient(to right, hsl(240, 100%, 56%), hsl(240, 100%, 20%));
+    width: 30%;
+    height: 80%;
+    border-radius: 20px;
+    border:3px solid aqua;
+}
+
+#imie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+}
+
+#zdjecie{
+    height: 70%;
+    background-image: url(joe.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#porada{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.ukryj{
+    transform: scale(0);
+}

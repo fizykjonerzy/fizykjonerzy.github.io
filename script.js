@@ -66,6 +66,9 @@ let pytanie = document.getElementById("pytanietext");
 let odpowiedzi = document.querySelectorAll(".odp");
 let nastepne = document.getElementById("nastepne");
 let progi = document.getElementById("progi");
+let publicznoscOkno = document.getElementById("publicznoscOkno");
+let telefonOkno = document.getElementById("telefonOkno");
+
 
 let szczebel = document.querySelectorAll('.szczebel');
 let szczebelPogrubienie = szczebel.length -1;
@@ -93,6 +96,7 @@ let pokazPytanie = () => {
     odpowiedzi.forEach(e => {
         e.classList.remove("zla");
         e.classList.remove("poprawna");
+        e.classList.remove("ukryj");
         e.textContent = literki[i]+". "+p.odpowiedzi[i];
         i++;
     });
@@ -110,6 +114,9 @@ start.addEventListener("click",()=>{
 odpowiedzi.forEach(e => {
     e.addEventListener("click",() => {
         if(czyodp == false){
+            publicznoscOkno.style.display = "none";
+            telefonOkno.style.display = "none";
+
             e.classList.add("czekaj");
             czyodp = true;
             setTimeout(() => {
@@ -164,14 +171,50 @@ fortyforty.addEventListener("click",() =>{
 
         niepoprawne.splice(p.poprawna,1);
         nplos = Math.floor(Math.random() * niepoprawne.length);
-        niepoprawne[nplos].replaceWith(document.createElement("div"));
+        niepoprawne[nplos].classList.add("ukryj");
 
         niepoprawne.splice(nplos,1);
         nplos = Math.floor(Math.random() * niepoprawne.length);
-        niepoprawne[nplos].replaceWith(document.createElement("div"));
+        niepoprawne[nplos].classList.add("ukryj");
 
         fortyforty.classList.remove("kolo");
         fortyforty.classList.add("kolonieaktywne");
     }
+})
+
+publicznosc.addEventListener("click",()=>{
+  if(!publicznosc.classList.contains("kolonieaktywne")){
+  publicznoscOkno.style.display = "block";
+  let procenty = [];
+  procenty.push(Math.floor(Math.random() * 51) + 50);
+  procenty.push(Math.floor(Math.random() * (100 - procenty[0])));
+  procenty.push(Math.floor(Math.random() * (100 - procenty[0] - procenty[1])));
+  procenty.push(100-procenty[0]-procenty[1]-procenty[2]);
+
+  paski = document.querySelectorAll(".pasek");
+
+  paski[p.poprawna].style.width = procenty[0] + "%";
+  numerki = [0,1,2,3];
+  numerki.splice(p.poprawna,1);
+  
+  i = 0;
+  numerki.forEach(e => {
+    i++;
+    console.log(e);
+    paski[e].style.width = procenty[i] + "%";
+  });
+  publicznosc.classList.remove("kolo");
+  publicznosc.classList.add("kolonieaktywne");
+}
+})
+
+telefon.addEventListener("click", () => {
+  if(!telefon.classList.contains("kolonieaktywne")){
+    telefonOkno.style.display = "block";
+    let literki = ["A","B","C","D"];
+    document.getElementById("porada").innerHTML += literki[p.poprawna];
+    telefon.classList.remove("kolo");
+    telefon.classList.add("kolonieaktywne");
+  }
 })
 
