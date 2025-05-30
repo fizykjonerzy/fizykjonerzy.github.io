@@ -29,11 +29,10 @@ let pokazPytanie = () => {
     czyodp = false;
     szczebel[szczebelIndex].classList.add("pogrubienie");
     document.getElementById("apytanie").textContent = "Pytanie "+(a)+"/12";
-
-    if(szczebel[szczebelIndex].innerHTML > 40000 && szczebel[szczebelIndex].innerHTML > 1000){
+    if(szczebelIndex == 4){
         gwarantowane.textContent = "Gwarantowane: 40 000 zł";
     }
-    if(szczebel[szczebelIndex].innerHTML > 1000){
+    if(szczebelIndex == 9){
         gwarantowane.textContent = "Gwarantowane: 1000 zł";
     }
                 
