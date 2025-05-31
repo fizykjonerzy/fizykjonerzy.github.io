@@ -5,7 +5,6 @@ let p = 0;
 let kasa = "0 zł";
 
 let czyodp = false;
-let liczCzas = false;
 let stoper = 0;
 
 let start = document.getElementById("start");
@@ -39,20 +38,16 @@ return (
 );
 }
 
-if (!liczCzas) {
-    liczCzas = true;
+function liczCzas(){
     stoper = setInterval(() => {
       sekundy++;
       czas.textContent = "Czas: " + format(sekundy);
     }, 1000);
-  }
+}
 
   function zatrzymajCzas() {
-  if (liczCzas) {
-    liczCzas = false;
     clearInterval(stoper);
-  }
-  czasGry.textContent = "Czas gry: "+format(sekundy);
+    czasGry.textContent = "Czas gry: "+format(sekundy);
 }
 
 
@@ -94,6 +89,7 @@ start.addEventListener("click",()=>{
     quiz.style.display = "block";
     document.querySelector("footer").style.display = "none";
     pokazPytanie();
+    liczCzas();
 })
 
 
