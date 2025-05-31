@@ -8,10 +8,12 @@
 }
 *{
     font-family: Roboto;
+    text-shadow: 2px 2px 5px black;
 }
 body{
     text-align: center;
     color:white;
+    
 }
 
 html, body {
@@ -41,15 +43,7 @@ main{
     position: relative;
 }
 
-#nastepne{
-    display:none; 
-}
-
-#przegrana{
-    display:none; 
-}
-
-#wygrana{
+#nastepneOkno,#koniecGry{
     display:none; 
 }
 
@@ -90,7 +84,8 @@ main{
 }
 
 button{
-    background: linear-gradient(to right, hsl(240, 100%, 56%), hsl(240, 100%, 20%));
+    /* background: linear-gradient(to right, hsl(240, 100%, 56%), hsl(240, 100%, 20%)); */
+    background-color: hsl(240, 100%, 60%);
     border: 2px solid white;
     border-radius: 20px;
     color:white;
@@ -105,15 +100,18 @@ button:hover{
 }
 
 .poprawna{
-    background: linear-gradient(to right, hsl(135, 100%, 56%), hsl(135, 100%, 20%));
+    /* background: linear-gradient(to right, hsl(135, 100%, 56%), hsl(135, 100%, 20%)); */
+    background-color: hsl(135, 100%, 40%);
 }
 
 .zla{
-    background: linear-gradient(to right, hsl(0, 100%, 56%), hsl(0, 100%, 20%));
+    /* background: linear-gradient(to right, hsl(0, 100%, 56%), hsl(0, 100%, 20%)); */
+    background-color: hsl(0, 100%, 40%);
 }
 
 .czekaj{
-    background: linear-gradient(to right, hsl(41, 100%, 56%), hsl(41, 100%, 20%));
+    /* background: linear-gradient(to right, hsl(41, 100%, 56%), hsl(41, 100%, 20%)); */
+    background-color: hsl(39, 100%, 55%);
 }
 
 #mainmenu{
@@ -203,7 +201,7 @@ button:hover{
     background-color:orange;
     color:white;
     font-weight: bold;
-    text-shadow: 1px 1px 5px black;
+    /* text-shadow: 1px 1px 5px black; */
     border-radius: 15px;
 }
 
@@ -226,7 +224,7 @@ button:hover{
 
 .kolonieaktywne{
     transition: ease 0.5s;
-    filter: grayscale(1);
+    filter: grayscale(1) brightness(50%);
     cursor: not-allowed;
 }
 
@@ -240,24 +238,27 @@ button:hover{
     padding:20px;
     border-radius: 20px;
     border:3px solid aqua;
+    box-shadow: 0 0 20px aqua;
 }
 
 #publicznoscOkno table{
     width: 100%;
     height: 100%;
     table-layout: fixed;
+    
 }
 
 
 .pasek{
+    width: 0;
     height: 80%;
     background-color: white;
     float:left;
-
 }
 
 .literka{
     width: 40px;
+    color:orange;
 }
 
 
@@ -268,6 +269,7 @@ button:hover{
     height: 80%;
     border-radius: 20px;
     border:3px solid aqua;
+    box-shadow: 0 0 20px aqua;
 }
 
 #imie{
@@ -294,4 +296,8 @@ button:hover{
 
 .ukryj{
     transform: scale(0);
+}
+
+.orango{
+    color:orange;
 }

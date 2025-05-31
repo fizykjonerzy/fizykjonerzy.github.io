@@ -10,12 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="pytania.js" defer></script>
     <script src="script.js" defer></script>
+    <link rel="icon" href="logo.png">
 </head>
 <body>
     <main>
         <div id="mainmenu">
             <div>
-                <img src="logo.png" alt="logo" style="height: 500px;">
+                <img src="logo.png" alt="logo" style="height: 500px; filter: drop-shadow(0 0 10px aqua);">
             </div>
             <div>
                 <button id="start" class="przycisk">START</button>
@@ -30,8 +31,8 @@
             <div id="srodek">
                 <div id="staty">
                     <p id="apytanie">Pytanie 1/12</p>
-                    <p id="czas">Czas</p>
-                    <p id="gwarantowane">Gwarantowane: 0zł</p>
+                    <p id="czas">Czas: 00:00</p>
+                    <p id="gwarantowane">Gwarantowane: 0 zł</p>
                 </div>
                 <div id="srodekmenu">
                     <div id="publicznoscOkno">
@@ -65,34 +66,34 @@
                         </div>
                     </div>
 
-                    <button id="nastepne" class="przycisk">NASTĘPNE PYTANIE</button>
-                    <div id="przegrana">
-                        <h1>Przegrałeś! :(</h1>
-                        <h2 id="progi"></h2>
+                    <div id="nastepneOkno">
+                        <h2>Poprawna odpowiedź!</h2>
+                        <button id="nastepne" class="przycisk">NASTĘPNE PYTANIE</button>
+                    </div>
+                
+                    <div id="koniecGry">
+                        <div id="wynik"></div>
+                        <h3 id="czasGry"></h3>
                         <button class="przycisk" onclick="wroc()">WRÓĆ DO MENU</button>
                     </div>
-                    <div id="wygrana">
-                        <h1>Wygrałeś</h1>
-                        <h1>1 000 000 zł!</h1>
-                        <button class="przycisk" onclick="wroc()">WRÓĆ DO MENU</button>
-                    </div>
+
                 </div>
                 
             </div>
             <div id="prawy">
                     <table id="kasa">
-                        <tr><td>12. </td><td class="szczebel">1 000 000</td></tr>
-                        <tr><td>11. </td><td class="szczebel">500 000</td></tr>
-                        <tr><td>10. </td><td class="szczebel">250 000</td></tr>
-                        <tr><td>9. </td><td class="szczebel">125 000</td></tr>
-                        <tr><td>8. </td><td class="szczebel">75 000</td></tr>
-                        <tr><td>7. </td><td class="szczebel" style="text-decoration: underline;">40 000</td></tr>
-                        <tr><td>6. </td><td class="szczebel">20 000</td></tr>
-                        <tr><td>5. </td><td class="szczebel">10 000</td></tr>
-                        <tr><td>4. </td><td class="szczebel">5000</td></tr>
-                        <tr><td>3. </td><td class="szczebel">2000</td></tr>
-                        <tr><td>2. </td><td class="szczebel" style="text-decoration: underline;">1000</td></tr>
-                        <tr><td>1. </td><td class="szczebel">500</td></tr>
+                        <tr><td class="orango">12. </td><td class="szczebel">1 000 000</td></tr>
+                        <tr><td class="orango">11. </td><td class="szczebel">500 000</td></tr>
+                        <tr><td class="orango">10. </td><td class="szczebel">250 000</td></tr>
+                        <tr><td class="orango">9. </td><td class="szczebel">125 000</td></tr>
+                        <tr><td class="orango">8. </td><td class="szczebel">75 000</td></tr>
+                        <tr><td class="orango">7. </td><td class="szczebel" style="text-decoration: underline;">40 000</td></tr>
+                        <tr><td class="orango">6. </td><td class="szczebel">20 000</td></tr>
+                        <tr><td class="orango">5. </td><td class="szczebel">10 000</td></tr>
+                        <tr><td class="orango">4. </td><td class="szczebel">5000</td></tr>
+                        <tr><td class="orango">3. </td><td class="szczebel">2000</td></tr>
+                        <tr><td class="orango">2. </td><td class="szczebel" style="text-decoration: underline;">1000</td></tr>
+                        <tr><td class="orango">1. </td><td class="szczebel">500</td></tr>
                     </table>
             </div>
         </div>

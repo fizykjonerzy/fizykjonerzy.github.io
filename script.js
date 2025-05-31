@@ -2,8 +2,11 @@ let los = 0;
 let a = 0;
 let byly = [];
 let p = 0;
+let kasa = "0 zł";
 
 let czyodp = false;
+let liczCzas = false;
+let stoper = 0;
 
 let start = document.getElementById("start");
 let mainmenu = document.getElementById("mainmenu");
@@ -12,13 +15,46 @@ let quiz = document.getElementById("quiz");
 let pytanie = document.getElementById("pytanietext");
 let odpowiedzi = document.querySelectorAll(".odp");
 let nastepne = document.getElementById("nastepne");
+let nastepneOkno = document.getElementById("nastepneOkno");
 let progi = document.getElementById("progi");
 let publicznoscOkno = document.getElementById("publicznoscOkno");
 let telefonOkno = document.getElementById("telefonOkno");
 let gwarantowane = document.getElementById("gwarantowane");
+let czasGry = document.getElementById("czasGry");
+let koniecGry = document.getElementById("koniecGry");
+let wynik = document.getElementById("wynik");
 
 let szczebel = document.querySelectorAll('.szczebel');
 let szczebelIndex = szczebel.length -1;
+
+
+let sekundy = 0;
+const czas = document.getElementById("czas");
+
+function format(s) {
+const min = Math.floor(s / 60);
+const sek = s % 60;
+return (
+    String(min).padStart(2, '0') + ":" + String(sek).padStart(2, '0')
+);
+}
+
+if (!liczCzas) {
+    liczCzas = true;
+    stoper = setInterval(() => {
+      sekundy++;
+      czas.textContent = "Czas: " + format(sekundy);
+    }, 1000);
+  }
+
+  function zatrzymajCzas() {
+  if (liczCzas) {
+    liczCzas = false;
+    clearInterval(stoper);
+  }
+  czasGry.textContent = "Czas gry: "+format(sekundy);
+}
+
 
 let pokazPytanie = () => {
     a++;
@@ -29,14 +65,16 @@ let pokazPytanie = () => {
     czyodp = false;
     szczebel[szczebelIndex].classList.add("pogrubienie");
     document.getElementById("apytanie").textContent = "Pytanie "+(a)+"/12";
+
     if(szczebelIndex == 4){
-        gwarantowane.textContent = "Gwarantowane: 40 000 zł";
+        kasa = "40 000 zł";
     }
     if(szczebelIndex == 9){
-        gwarantowane.textContent = "Gwarantowane: 1000 zł";
+        kasa = "1000 zł";
     }
-                
-    nastepne.style.display = "none";
+    gwarantowane.textContent = "Gwarantowane: "+kasa;
+
+    nastepneOkno.style.display = "none";
     pytanie.textContent = p.pytanie;
 
     let i = 0;
@@ -45,7 +83,7 @@ let pokazPytanie = () => {
         e.classList.remove("zla");
         e.classList.remove("poprawna");
         e.classList.remove("ukryj");
-        e.textContent = literki[i]+". "+p.odpowiedzi[i];
+        e.innerHTML = "<span class='orango'>"+literki[i]+". </span>"+p.odpowiedzi[i];
         i++;
     });
 };
@@ -73,26 +111,19 @@ odpowiedzi.forEach(e => {
             if(podana == p.poprawna){
                 e.classList.add("poprawna");
                 if(a < 12){
-                  nastepne.style.display = "block";
+                  nastepneOkno.style.display = "block";
                 }else{
-                  // document.getElementById("quiz").style.display = "none";
-                  // document.getElementById("menu").style.display = "none";
-                  document.getElementById("wygrana").style.display = "block";
+                    zatrzymajCzas();
+                    koniecGry.style.display = "block";
+                    wynik.innerHTML = "<h1>WYGRAŁEŚ</h1><h1>1 000 000 zł</h1>";
                 }
                 
             }else{
+                zatrzymajCzas();
                 e.classList.add("zla");
                 odpowiedzi[p.poprawna].classList.add("poprawna");
-                document.getElementById("przegrana").style.display = "block";
-                
-                if(szczebel[szczebelIndex].innerHTML > 40000 && szczebel[szczebelPogrubienie].innerHTML > 1000){
-                    progi.textContent = "Wygrana z progów gwarantowanych: 40 000 zł";
-                }
-                if(szczebel[szczebelIndex].innerHTML > 1000){
-                    progi.textContent = "Wygrana z progów gwarantowanych: 1000 zł";
-                }else{
-                    progi.textContent = "Nie osiągnąłeś żadnego progu gwarantowanego!";
-                }
+                koniecGry.style.display = "block";
+                wynik.innerHTML = "<h1>Przegrałeś!</h1><h2>Wygrana z progów gwarantowanych: "+kasa+"</h2>";
             }
             },2000);
         }
@@ -165,4 +196,3 @@ telefon.addEventListener("click", () => {
     telefon.classList.add("kolonieaktywne");
   }
 })
-
