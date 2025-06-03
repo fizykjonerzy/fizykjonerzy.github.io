@@ -74,6 +74,7 @@ let pokazPytanie = () => {
 
     let i = 0;
     let literki = ["A","B","C","D"];
+    console.log(p.poprawna);
     odpowiedzi.forEach(e => {
         e.classList.remove("zla");
         e.classList.remove("poprawna");
@@ -88,13 +89,17 @@ start.addEventListener("click",()=>{
     menu.style.display = "block";
     quiz.style.display = "block";
     document.querySelector("footer").style.display = "none";
+    document.getElementById('przyciskiNuta').style.display = "none";
     pokazPytanie();
     liczCzas();
+    document.getElementById('bgMusic').pause();
+    document.getElementById("startGry").play();
 })
 
 
 odpowiedzi.forEach(e => {
     e.addEventListener("click",() => {
+        document.getElementById("select").play();
         if(czyodp == false){
             publicznoscOkno.style.display = "none";
             telefonOkno.style.display = "none";
@@ -106,20 +111,24 @@ odpowiedzi.forEach(e => {
             let podana = e.id;
             if(podana == p.poprawna){
                 e.classList.add("poprawna");
+                document.getElementById("win").play();
                 if(a < 12){
                   nastepneOkno.style.display = "block";
                 }else{
                     zatrzymajCzas();
                     koniecGry.style.display = "block";
                     wynik.innerHTML = "<h1>WYGRAŁEŚ</h1><h1>1 000 000 zł</h1>";
+                    document.getElementById("milion").play();
                 }
                 
             }else{
                 zatrzymajCzas();
+                document.getElementById("koniecGryNuta").play();
                 e.classList.add("zla");
                 odpowiedzi[p.poprawna].classList.add("poprawna");
                 koniecGry.style.display = "block";
                 wynik.innerHTML = "<h1>Przegrałeś!</h1><h2>Wygrana z progów gwarantowanych: "+kasa+"</h2>";
+                
             }
             },2000);
         }
@@ -130,6 +139,7 @@ nastepne.addEventListener("click",() => {
         szczebel[szczebelIndex].classList.remove("pogrubienie");
         szczebelIndex--;
         pokazPytanie();
+        document.getElementById("startGry").play();
 })
 
 let wroc = () => {
@@ -192,3 +202,21 @@ telefon.addEventListener("click", () => {
     telefon.classList.add("kolonieaktywne");
   }
 })
+//muza
+
+  function playAudio() {
+    document.getElementById("bgMusic").play();
+  }
+
+
+  let wlacz = document.getElementById('wlacz');
+  let theme = document.getElementById('bgMusic');
+  let wylacz = document.getElementById('wylacz');
+
+  wlacz.addEventListener('click',()=>{
+    theme.play()
+  })
+
+  wylacz.addEventListener('click',()=>{
+    theme.pause()
+  })
