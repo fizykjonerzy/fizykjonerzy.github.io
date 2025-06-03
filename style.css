@@ -142,7 +142,7 @@ button:hover{
 
 .przycisk{
     height: 10%;
-    width: 30%;
+    width: 100%;
 }
 
 #prawy{
@@ -315,4 +315,11 @@ button:hover{
 
 .orango{
     color:orange;
+}
+
+p,h2{
+    font-size: 1.5rem;
+}
+h3{
+    font-size: 1.25rem;
 }
